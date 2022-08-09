@@ -1,1 +1,1 @@
-# rock-paper-scissors
+Tuesday, August 9, 2022 - This is my first Javascript project. I will build a simple rock, paper, scissors game that will can be played in the console. Later, I will add a GUI.
