@@ -1,10 +1,10 @@
 //Global variables.
 let userSelection = prompt('Rock, paper, or scissors?', '');
 let computerSelection = getComputerChoice();
-const winString = 'You win!';
-const loseString = 'You lose!';
-const tieString = 'Tie!';
-const invalidString = 'Invalid! Try again!';
+let winVar;
+let loseVar;
+let tieVar;
+let invalidVar;
 
 //PC takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
@@ -16,21 +16,26 @@ function getComputerChoice() {
 //User inputs their choice, user input and PC choice compared, round winner declared.
 function playRound(userSelection, computerSelection) {
     if ((userSelection.toLowerCase() === 'rock') && (computerSelection === 'scissors')) {
-        return winString;
+        return winVar;
     } else if ((userSelection.toLowerCase() === 'paper') && (computerSelection === 'rock')) {
-        return winString;
+        return winVar;
     } else if ((userSelection.toLowerCase() === 'scissors') && (computerSelection === 'paper')) {
-        return winString;
+        return winVar;
     } else if (userSelection.toLowerCase() === computerSelection) {
-        return tieString;
+        return tieVar;
     } else if (!(userSelection.toLowerCase() === 'rock') && !(userSelection.toLowerCase() === 'paper') && !(userSelection.toLowerCase() === 'scissors')) {
-        return invalidString;
+        return invalidVar;
     } else {
-        return loseString;
+        return loseVar;
     }
 }
+
+//Loop single round 5 times for a full game. Declare winner.
+function playGame() {
+    playRound(userSelection, computerSelection);
+        }
 
 //Console output.
 console.log('Computer chose: ' + computerSelection);
 console.log('You chose: ' + userSelection);
-console.log(playRound(userSelection, computerSelection));
+console.log(playGame());
