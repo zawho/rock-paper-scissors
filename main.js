@@ -1,6 +1,10 @@
 //Global variables.
 let userSelection = prompt('Rock, paper, or scissors?', '');
 let computerSelection = getComputerChoice();
+const winString = 'You win!';
+const loseString = 'You lose!';
+const tieString = 'Tie!';
+const invalidString = 'Invalid! Try again!';
 
 //PC takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
@@ -9,20 +13,20 @@ function getComputerChoice() {
     return randChoice;
 }
 
-//User inputs their choice, user input and pc choice compared, round winner declared.
+//User inputs their choice, user input and PC choice compared, round winner declared.
 function playRound(userSelection, computerSelection) {
     if ((userSelection.toLowerCase() === 'rock') && (computerSelection === 'scissors')) {
-        return 'You win!';
+        return winString;
     } else if ((userSelection.toLowerCase() === 'paper') && (computerSelection === 'rock')) {
-        return 'You win!';
+        return winString;
     } else if ((userSelection.toLowerCase() === 'scissors') && (computerSelection === 'paper')) {
-        return 'You win!';
+        return winString;
     } else if (userSelection.toLowerCase() === computerSelection) {
-        return 'Tie!';
+        return tieString;
     } else if (!(userSelection.toLowerCase() === 'rock') && !(userSelection.toLowerCase() === 'paper') && !(userSelection.toLowerCase() === 'scissors')) {
-        return 'Invalid! Try again!';
+        return invalidString;
     } else {
-        return 'You lose!';
+        return loseString;
     }
 }
 
