@@ -10,7 +10,9 @@ function getComputerChoice() {
 }
 
 //User inputs their choice, user input and PC choice compared, round winner declared.
-function playRound(userSelection, computerSelection) {
+function playRound() {
+    let userSelection = prompt('Rock, paper, or scissors?', '');
+    let computerSelection = getComputerChoice();
     if ((userSelection.toLowerCase() === 'rock') && (computerSelection === 'scissors')) {
         return userScore++;
     } else if ((userSelection.toLowerCase() === 'paper') && (computerSelection === 'rock')) {
@@ -29,12 +31,10 @@ function playRound(userSelection, computerSelection) {
 //Loop single round 5 times for a full game. Declare winner.
 function playGame() {
     for (i = 0; i < 5; i++) {
-        let userSelection = prompt('Rock, paper, or scissors?', '');
-        let computerSelection = getComputerChoice();
-        playRound(userSelection, computerSelection);
+        playRound();
         console.log(i);
     }
 }
 
-//Console output.
-console.log(playGame());
+//Call game function.
+playGame();
