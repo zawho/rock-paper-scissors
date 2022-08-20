@@ -13,26 +13,31 @@ function getComputerChoice() {
 function playRound() {
     let userSelection = prompt('Rock, paper, or scissors?', '');
     let computerSelection = getComputerChoice();
+    let roundMessage = `You chose ${userSelection.toUpperCase()} and computer chose ${computerSelection.toUpperCase()}`;
     if (userSelection.toLowerCase() === computerSelection) {
-        return 'Tie!';
+        return `Tie! \n${roundMessage}`;
     } else if (!(userSelection.toLowerCase() === 'rock') && !(userSelection.toLowerCase() === 'paper') && !(userSelection.toLowerCase() === 'scissors')) {
-        return 'Invalid!';
+        return `Invalid! \n${roundMessage}`;
     } else if ((userSelection.toLowerCase() === 'rock') && (computerSelection === 'scissors')) {
-        return userScore++;
+        userScore += 1;
+        return roundMessage;
     } else if ((userSelection.toLowerCase() === 'paper') && (computerSelection === 'rock')) {
-        return userScore++;
+        userScore += 1;
+        return roundMessage;
     } else if ((userSelection.toLowerCase() === 'scissors') && (computerSelection === 'paper')) {
-        return userScore++; 
+        userScore += 1;
+        return roundMessage; 
     } else {
-        return computerScore++;
+        computerScore += 1;
+        return roundMessage;
     }
 }
 
 //Loop single round 5 times for a full game. Declare winner.
 function playGame() {
     for (i = 0; i < 5; i++) {
-        playRound();
-        console.log(i);
+        console.log(playRound());
+        console.log(`YOU: ${userScore} COMPUTER: ${computerScore}`);
     }
 }
 
