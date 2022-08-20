@@ -13,16 +13,16 @@ function getComputerChoice() {
 function playRound() {
     let userSelection = prompt('Rock, paper, or scissors?', '');
     let computerSelection = getComputerChoice();
-    if ((userSelection.toLowerCase() === 'rock') && (computerSelection === 'scissors')) {
+    if (userSelection.toLowerCase() === computerSelection) {
+        return 'Tie!';
+    } else if (!(userSelection.toLowerCase() === 'rock') && !(userSelection.toLowerCase() === 'paper') && !(userSelection.toLowerCase() === 'scissors')) {
+        return 'Invalid!';
+    } else if ((userSelection.toLowerCase() === 'rock') && (computerSelection === 'scissors')) {
         return userScore++;
     } else if ((userSelection.toLowerCase() === 'paper') && (computerSelection === 'rock')) {
         return userScore++;
     } else if ((userSelection.toLowerCase() === 'scissors') && (computerSelection === 'paper')) {
-        return userScore++;
-    } else if (userSelection.toLowerCase() === computerSelection) {
-        return 'Tie!';
-    } else if (!(userSelection.toLowerCase() === 'rock') && !(userSelection.toLowerCase() === 'paper') && !(userSelection.toLowerCase() === 'scissors')) {
-        return 'Invalid!';
+        return userScore++; 
     } else {
         return computerScore++;
     }
