@@ -4,8 +4,8 @@ let computerScore = 0;
 
 //PC takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
-    choiceArr = ['rock', 'paper', 'scissors'];
-    randChoice = choiceArr[Math.floor(Math.random() * choiceArr.length)];
+    let choiceArr = ['rock', 'paper', 'scissors'];
+    let randChoice = choiceArr[Math.floor(Math.random() * choiceArr.length)];
     return randChoice;
 }
 
@@ -33,11 +33,23 @@ function playRound() {
     }
 }
 
-//Loop single round 5 times for a full game. Declare winner.
+//Loop single round 5 times for a full game.
 function playGame() {
     for (i = 0; i < 5; i++) {
         console.log(playRound());
         console.log(`YOU: ${userScore} COMPUTER: ${computerScore}`);
+    }
+    getWinner();
+}
+
+//Declare winner.
+function getWinner() {
+    if (userScore > computerScore) {
+        console.log('You win!');
+    } else if (userScore < computerScore) {
+        console.log('You lose! Computer wins!');
+    } else {
+        console.log('A tie! Please try again!');
     }
 }
 
