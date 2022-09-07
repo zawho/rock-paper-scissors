@@ -2,8 +2,7 @@
 let userScore = 0;
 let computerScore = 0;
 
-//Temp HTML section.
-const allButtons = document.querySelector('.buttons');
+//Temp UI section.
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
