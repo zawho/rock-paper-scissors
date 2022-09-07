@@ -2,6 +2,12 @@
 let userScore = 0;
 let computerScore = 0;
 
+//Temp HTML section.
+const allButtons = document.querySelector('.buttons');
+const rockButton = document.querySelector('.rock');
+const paperButton = document.querySelector('.paper');
+const scissorsButton = document.querySelector('.scissors');
+
 //PC takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
     let choiceArr = ['rock', 'paper', 'scissors'];
@@ -35,10 +41,10 @@ function playRound() {
 
 //Loop single round 5 times for a full game.
 function playGame() {
-    for (i = 0; i < 5; i++) {
+//    for (i = 0; i < 5; i++) {
         console.log(playRound());
         console.log(`YOU: ${userScore} COMPUTER: ${computerScore}`);
-    }
+//    }
     getWinner();
 }
 
