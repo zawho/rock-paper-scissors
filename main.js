@@ -2,21 +2,19 @@
 let userScore = 0;
 let computerScore = 0;
 let userSelection;
-let computerSelection = getComputerChoice();
 
 //Temp UI section.
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
 rockButton.addEventListener('click', function() {
-    getComputerChoice();
-    playRound('rock', computerSelection);
+    playRound('rock');
 });
 paperButton.addEventListener('click', function() {
-    playRound('paper', computerSelection);
+    playRound('paper');
 });
 scissorsButton.addEventListener('click', function() {
-    playRound('scissors', computerSelection);
+    playRound('scissors');
 });
 
 
@@ -29,7 +27,8 @@ function getComputerChoice() {
 }
 
 //User inputs their choice, user input and PC choice compared, round winner declared.
-function playRound(userSelection, computerSelection) {
+function playRound(userSelection) {
+    let computerSelection = getComputerChoice();
     let roundMessage = `You chose ${userSelection} and computer chose ${computerSelection}`;
     if (userSelection === computerSelection) {
         console.log(`Tie! \n${roundMessage}`);
