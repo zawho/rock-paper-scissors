@@ -7,6 +7,7 @@ let userSelection;
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
+const resultsDiv = document.querySelector('.results');
 rockButton.addEventListener('click', function() {
     playRound('rock');
 });
@@ -16,8 +17,6 @@ paperButton.addEventListener('click', function() {
 scissorsButton.addEventListener('click', function() {
     playRound('scissors');
 });
-
-
 
 //PC takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
@@ -31,21 +30,21 @@ function playRound(userSelection) {
     let computerSelection = getComputerChoice();
     let roundMessage = `You chose ${userSelection} and computer chose ${computerSelection}`;
     if (userSelection === computerSelection) {
-        console.log(`Tie! \n${roundMessage}`);
+        resultsDiv.innerText = `Tie! \n${roundMessage}`;
     } else if (!(userSelection === 'rock') && !(userSelection === 'paper') && !(userSelection === 'scissors')) {
-        console.log(`Invalid! \n${roundMessage}`);
+        resultsDiv.innerText = `Invalid! \n${roundMessage}`;
     } else if ((userSelection === 'rock') && (computerSelection === 'scissors')) {
         userScore += 1;
-        console.log(roundMessage);
+        resultsDiv.innerText = roundMessage;
     } else if ((userSelection === 'paper') && (computerSelection === 'rock')) {
         userScore += 1;
-        console.log(roundMessage);
+        resultsDiv.innerText = roundMessage;
     } else if ((userSelection === 'scissors') && (computerSelection === 'paper')) {
         userScore += 1;
-        console.log(roundMessage); 
+        resultsDiv.innerText = roundMessage; 
     } else {
         computerScore += 1;
-        console.log(roundMessage);
+        resultsDiv.innerText = roundMessage;
     }
 }
 
