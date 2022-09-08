@@ -1,11 +1,25 @@
 //Global variables.
 let userScore = 0;
 let computerScore = 0;
+let userSelection;
+let computerSelection = getComputerChoice();
 
 //Temp UI section.
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
+rockButton.addEventListener('click', function() {
+    getComputerChoice();
+    playRound('rock', computerSelection);
+});
+paperButton.addEventListener('click', function() {
+    playRound('paper', computerSelection);
+});
+scissorsButton.addEventListener('click', function() {
+    playRound('scissors', computerSelection);
+});
+
+
 
 //PC takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
@@ -15,26 +29,24 @@ function getComputerChoice() {
 }
 
 //User inputs their choice, user input and PC choice compared, round winner declared.
-function playRound() {
-    let userSelection = prompt('Rock, paper, or scissors?', '');
-    let computerSelection = getComputerChoice();
-    let roundMessage = `You chose ${userSelection.toUpperCase()} and computer chose ${computerSelection.toUpperCase()}`;
-    if (userSelection.toLowerCase() === computerSelection) {
-        return `Tie! \n${roundMessage}`;
-    } else if (!(userSelection.toLowerCase() === 'rock') && !(userSelection.toLowerCase() === 'paper') && !(userSelection.toLowerCase() === 'scissors')) {
-        return `Invalid! \n${roundMessage}`;
-    } else if ((userSelection.toLowerCase() === 'rock') && (computerSelection === 'scissors')) {
+function playRound(userSelection, computerSelection) {
+    let roundMessage = `You chose ${userSelection} and computer chose ${computerSelection}`;
+    if (userSelection === computerSelection) {
+        console.log(`Tie! \n${roundMessage}`);
+    } else if (!(userSelection === 'rock') && !(userSelection === 'paper') && !(userSelection === 'scissors')) {
+        console.log(`Invalid! \n${roundMessage}`);
+    } else if ((userSelection === 'rock') && (computerSelection === 'scissors')) {
         userScore += 1;
-        return roundMessage;
-    } else if ((userSelection.toLowerCase() === 'paper') && (computerSelection === 'rock')) {
+        console.log(roundMessage);
+    } else if ((userSelection === 'paper') && (computerSelection === 'rock')) {
         userScore += 1;
-        return roundMessage;
-    } else if ((userSelection.toLowerCase() === 'scissors') && (computerSelection === 'paper')) {
+        console.log(roundMessage);
+    } else if ((userSelection === 'scissors') && (computerSelection === 'paper')) {
         userScore += 1;
-        return roundMessage; 
+        console.log(roundMessage); 
     } else {
         computerScore += 1;
-        return roundMessage;
+        console.log(roundMessage);
     }
 }
 
@@ -59,4 +71,4 @@ function getWinner() {
 }
 
 //Call game function.
-playGame();
+//playRound();
