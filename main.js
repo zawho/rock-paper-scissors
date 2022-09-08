@@ -28,11 +28,9 @@ function getComputerChoice() {
 //User inputs their choice, user input and PC choice compared, round winner declared.
 function playRound(userSelection) {
     let computerSelection = getComputerChoice();
-    let roundMessage = `You chose ${userSelection} and computer chose ${computerSelection}`;
+    let roundMessage = `You chose ${userSelection} and computer chose ${computerSelection}! \nYOU: ${userScore} COMPUTER: ${computerScore}`;
     if (userSelection === computerSelection) {
-        resultsDiv.innerText = `Tie! \n${roundMessage}`;
-    } else if (!(userSelection === 'rock') && !(userSelection === 'paper') && !(userSelection === 'scissors')) {
-        resultsDiv.innerText = `Invalid! \n${roundMessage}`;
+        resultsDiv.innerText = `Tie! ${roundMessage}`;
     } else if ((userSelection === 'rock') && (computerSelection === 'scissors')) {
         userScore += 1;
         resultsDiv.innerText = roundMessage;
