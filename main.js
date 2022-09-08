@@ -4,11 +4,14 @@ let computerScore = 0;
 let userSelection;
 
 //UI.
-const buttonsDiv = document.querySelector('.round-buttons');
-const roundButtons = buttonsDiv.querySelectorAll('button');
+const rockButton = document.querySelector('.rock');
+const paperButton = document.querySelector('.paper');
+const scissorsButton = document.querySelector('.scissors');
 const roundResultsDiv = document.querySelector('.round-results');
 const roundScoreDiv = document.querySelector('.round-score');
 const gameResultsDiv = document.querySelector('.game-results');
+roundResultsDiv.innerText = 'Please choose...';
+roundScoreDiv.innerText = 'YOU: 0 COMPUTER: 0';
 
 //PC takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
@@ -53,18 +56,27 @@ function getWinner() {
 function finishGame() {
     if (userScore === 5 || computerScore === 5) {
         getWinner();
-        return;
     }
 }
 
+//Declare function for use in eventlisteners here.
+
 //Loop single round 5 times for a full game.
 function playGame() {
-    roundButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            playRound(button.className);
+    rockButton.addEventListener('click', function() {
+            playRound('rock');
             roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
             finishGame();
-        })
+    })
+    paperButton.addEventListener('click', function() {
+        playRound('paper');
+        roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
+        finishGame();
+    })
+    scissorsButton.addEventListener('click', function() {
+        playRound('scissors');
+        roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
+        finishGame();
     })
 }
 
