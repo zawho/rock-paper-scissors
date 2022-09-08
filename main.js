@@ -3,10 +3,9 @@ let userScore = 0;
 let computerScore = 0;
 let userSelection;
 
-//Temp UI section.
-const rockButton = document.querySelector('.rock');
-const paperButton = document.querySelector('.paper');
-const scissorsButton = document.querySelector('.scissors');
+//UI.
+const buttonsDiv = document.querySelector('.round-buttons');
+const roundButtons = buttonsDiv.querySelectorAll('button');
 const roundResultsDiv = document.querySelector('.round-results');
 const roundScoreDiv = document.querySelector('.round-score');
 const gameResultsDiv = document.querySelector('.game-results');
@@ -39,31 +38,6 @@ function playRound(userSelection) {
     }
 }
 
-function endGame() {
-    if (userScore === 5 || computerScore === 5) {
-        getWinner();
-    }
-}
-
-//Loop single round 5 times for a full game.
-function playGame() {
-    rockButton.addEventListener('click', function() {
-        playRound('rock');
-        roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
-        endGame();
-    });
-    paperButton.addEventListener('click', function() {
-        playRound('paper');
-        roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
-        endGame();
-    });
-    scissorsButton.addEventListener('click', function() {
-        playRound('scissors');
-        roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
-        endGame();
-    });
-}
-
 //Declare winner.
 function getWinner() {
     if (userScore > computerScore) {
@@ -73,6 +47,25 @@ function getWinner() {
     } else {
         gameResultsDiv.innerText = 'A tie! Please try again!';
     }
+}
+
+//Finish the game when one or both players reach 5 points.
+function finishGame() {
+    if (userScore === 5 || computerScore === 5) {
+        getWinner();
+        return;
+    }
+}
+
+//Loop single round 5 times for a full game.
+function playGame() {
+    roundButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            playRound(button.className);
+            roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
+            finishGame();
+        })
+    })
 }
 
 //Call game function.
