@@ -64,9 +64,9 @@ function playGame() {
 //Declare winner.
 function getWinner() {
     if (userScore > computerScore) {
-        headerText.innerText = 'u... win...?';
+        headerText.innerText = 'u win...?\n...disturbing...0_0';
     } else if (userScore < computerScore) {
-        headerText.innerText = 'LOL I WIN... of course... im a computer ^_^';
+        headerText.innerText = 'LOL i win!\nof course... im a computer ^_^';
     } else {
         headerText.innerText = 'a tie? really? *eye roll*';
     }
@@ -84,11 +84,13 @@ function finishGame() {
 
 //Reset game.
 function resetGame() {
-    userScore = 0;
-    computerScore = 0;
-    headerText.innerText = 'oh u do wanna try again...? lol ok -_-';
-    roundScoreDiv.innerText = 'ur score lol: 0 ... my score ^_^: 0';
-    playGame();
+    if ((userScore > 0) || (computerScore > 0)) {
+        userScore = 0;
+        computerScore = 0;
+        headerText.innerText = 'oh u wanna start over...? lol ok -_-';
+        roundScoreDiv.innerText = 'ur score lol: 0 ... my score ^_^: 0';
+        playGame();
+    }
 }
 
 //Call game function.
