@@ -7,7 +7,7 @@ const roundButtons = document.querySelectorAll('.round-buttons button');
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
-const headerText = document.querySelector('.header');
+const headerText = document.querySelector('.header h1');
 const roundScoreDiv = document.querySelector('.round-score');
 const resetButton = document.querySelector('.reset-button');
 roundScoreDiv.innerText = 'ur score lol: 0 ... my score ^_^: 0';
@@ -36,9 +36,9 @@ function getUserChoice(eachButton) {
 //Play round by comparing user and computer selections.
 function playRound(userSelection) {
     let computerSelection = getComputerChoice();
-    let userWinMessage = `u choose ${userSelection} and i choose ${computerSelection}...\n...interesting >_>`;
+    let userWinMessage = `u choose ${userSelection} and i choose ${computerSelection}... interesting >_>`;
     if (userSelection === computerSelection) {
-        headerText.innerText = `we both choose ${userSelection}... ehhh...\na tie... >_<`;
+        headerText.innerText = `we both choose ${userSelection}... ehhh... tie... >_<`;
     } else if ((userSelection === 'rock') && (computerSelection === 'scissors')) {
         userScore += 1;
         headerText.innerText = userWinMessage;
@@ -50,7 +50,7 @@ function playRound(userSelection) {
         headerText.innerText = userWinMessage; 
     } else {
         computerScore += 1;
-        headerText.innerText = `hehe i choose ${computerSelection} and u choose ${userSelection}...\n eheheh ^_^`;
+        headerText.innerText = `hehe i choose ${computerSelection} and u choose ${userSelection}... eheheh ^_^`;
     }
 }
 
@@ -64,9 +64,9 @@ function playGame() {
 //Declare winner.
 function getWinner() {
     if (userScore > computerScore) {
-        headerText.innerText = 'u win...?\n...disturbing...0_0';
+        headerText.innerText = 'u win...? ...disturbing...0_0';
     } else if (userScore < computerScore) {
-        headerText.innerText = 'LOL i win!\nof course... im a computer ^_^';
+        headerText.innerText = 'LOL i win! of course... im a computer ^_^';
     } else {
         headerText.innerText = 'a tie? really? *eye roll*';
     }
