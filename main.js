@@ -11,8 +11,11 @@ const scissorsButton = document.querySelector('.scissors');
 const roundResultsDiv = document.querySelector('.round-results');
 const roundScoreDiv = document.querySelector('.round-score');
 const gameResultsDiv = document.querySelector('.game-results');
+const resetButton = document.querySelector('.reset-button');
 roundResultsDiv.innerText = 'Please choose...';
 roundScoreDiv.innerText = 'YOU: 0 COMPUTER: 0';
+gameResultsDiv.innerText = 'Who will win...';
+resetButton.addEventListener('click', resetGame);
 
 //Computer takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
@@ -81,6 +84,16 @@ function finishGame() {
             button.removeEventListener('click', getUserChoice);
         });
     }
+}
+
+//Reset game.
+function resetGame() {
+    userScore = 0;
+    computerScore = 0;
+    roundResultsDiv.innerText = 'Please choose...';
+    roundScoreDiv.innerText = 'YOU: 0 COMPUTER: 0';
+    gameResultsDiv.innerText = 'Who will win...';
+    playGame();
 }
 
 //Call game function.
