@@ -1,20 +1,16 @@
-//Global variables.
+//Global score variables.
 let userScore = 0;
 let computerScore = 0;
-let userSelection;
 
 //UI.
 const roundButtons = document.querySelectorAll('.round-buttons button');
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
-const roundResultsDiv = document.querySelector('.round-results');
+const headerText = document.querySelector('.header');
 const roundScoreDiv = document.querySelector('.round-score');
-const gameResultsDiv = document.querySelector('.game-results');
 const resetButton = document.querySelector('.reset-button');
-roundResultsDiv.innerText = 'Please choose...';
-roundScoreDiv.innerText = 'YOU: 0 COMPUTER: 0';
-gameResultsDiv.innerText = 'Who will win...';
+roundScoreDiv.innerText = 'ur score lol: 0 ... my score ^_^: 0';
 resetButton.addEventListener('click', resetGame);
 
 //Computer takes a turn by randomly selecting rock, paper, or scissors. Return selection.
@@ -33,28 +29,28 @@ function getUserChoice(eachButton) {
     } else if (eachButton.target.className ==='scissors') {
         playRound('scissors');
     }
-    roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
+    roundScoreDiv.innerText = `ur score lol: ${userScore} ... my score ^_^: ${computerScore}`;
     finishGame();
 }
 
 //Play round by comparing user and computer selections.
 function playRound(userSelection) {
     let computerSelection = getComputerChoice();
-    let roundMessage = `You chose ${userSelection} and computer chose ${computerSelection}!`;
+    let userWinMessage = `u choose ${userSelection} and i choose ${computerSelection}...\n...interesting >_>`;
     if (userSelection === computerSelection) {
-        roundResultsDiv.innerText = `Tie! ${roundMessage}`;
+        headerText.innerText = `we both choose ${userSelection}... ehhh...\na tie... >_<`;
     } else if ((userSelection === 'rock') && (computerSelection === 'scissors')) {
         userScore += 1;
-        roundResultsDiv.innerText = roundMessage;
+        headerText.innerText = userWinMessage;
     } else if ((userSelection === 'paper') && (computerSelection === 'rock')) {
         userScore += 1;
-        roundResultsDiv.innerText = roundMessage;
+        headerText.innerText = userWinMessage;
     } else if ((userSelection === 'scissors') && (computerSelection === 'paper')) {
         userScore += 1;
-        roundResultsDiv.innerText = roundMessage; 
+        headerText.innerText = userWinMessage; 
     } else {
         computerScore += 1;
-        roundResultsDiv.innerText = roundMessage;
+        headerText.innerText = `hehe i choose ${computerSelection} and u choose ${userSelection}...\n eheheh ^_^`;
     }
 }
 
@@ -68,11 +64,11 @@ function playGame() {
 //Declare winner.
 function getWinner() {
     if (userScore > computerScore) {
-        gameResultsDiv.innerText = 'You win!';
+        headerText.innerText = 'u... win...?';
     } else if (userScore < computerScore) {
-        gameResultsDiv.innerText = 'You lose! Computer wins!';
+        headerText.innerText = 'LOL I WIN... of course... im a computer ^_^';
     } else {
-        gameResultsDiv.innerText = 'A tie! Please try again!';
+        headerText.innerText = 'a tie? really? *eye roll*';
     }
 }
 
@@ -90,9 +86,8 @@ function finishGame() {
 function resetGame() {
     userScore = 0;
     computerScore = 0;
-    roundResultsDiv.innerText = 'Please choose...';
-    roundScoreDiv.innerText = 'YOU: 0 COMPUTER: 0';
-    gameResultsDiv.innerText = 'Who will win...';
+    headerText.innerText = 'oh u do wanna try again...? lol ok -_-';
+    roundScoreDiv.innerText = 'ur score lol: 0 ... my score ^_^: 0';
     playGame();
 }
 
