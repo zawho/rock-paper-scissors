@@ -4,6 +4,7 @@ let computerScore = 0;
 let userSelection;
 
 //UI.
+const roundButtons = document.querySelectorAll('.round-buttons button');
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
@@ -13,14 +14,27 @@ const gameResultsDiv = document.querySelector('.game-results');
 roundResultsDiv.innerText = 'Please choose...';
 roundScoreDiv.innerText = 'YOU: 0 COMPUTER: 0';
 
-//PC takes a turn by randomly selecting rock, paper, or scissors. Return selection.
+//Computer takes a turn by randomly selecting rock, paper, or scissors. Return selection.
 function getComputerChoice() {
     let choiceArr = ['rock', 'paper', 'scissors'];
     let randChoice = choiceArr[Math.floor(Math.random() * choiceArr.length)];
     return randChoice;
 }
 
-//User inputs their choice, user input and PC choice compared, round winner declared.
+//Determine value of user's turn and calculate score.
+function getUserChoice(eachButton) {
+    if (eachButton.target.className === 'rock') {
+        playRound('rock');
+    } else if (eachButton.target.className === 'paper') {
+        playRound('paper');
+    } else if (eachButton.target.className ==='scissors') {
+        playRound('scissors');
+    }
+    roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
+    finishGame();
+}
+
+//Play round by comparing user and computer selections.
 function playRound(userSelection) {
     let computerSelection = getComputerChoice();
     let roundMessage = `You chose ${userSelection} and computer chose ${computerSelection}!`;
@@ -41,6 +55,13 @@ function playRound(userSelection) {
     }
 }
 
+//Play game when buttons are pressed until max score is reached.
+function playGame() {
+    roundButtons.forEach((button) => {
+        button.addEventListener('click', getUserChoice);
+    });
+}
+
 //Declare winner.
 function getWinner() {
     if (userScore > computerScore) {
@@ -52,32 +73,14 @@ function getWinner() {
     }
 }
 
-//Finish the game when one or both players reach 5 points.
+//Finish the game when one or both players reach 5 points. Disable RPS buttons.
 function finishGame() {
     if (userScore === 5 || computerScore === 5) {
         getWinner();
+        roundButtons.forEach((button) => {
+            button.removeEventListener('click', getUserChoice);
+        });
     }
-}
-
-//Declare function for use in eventlisteners here.
-
-//Loop single round 5 times for a full game.
-function playGame() {
-    rockButton.addEventListener('click', function() {
-            playRound('rock');
-            roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
-            finishGame();
-    })
-    paperButton.addEventListener('click', function() {
-        playRound('paper');
-        roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
-        finishGame();
-    })
-    scissorsButton.addEventListener('click', function() {
-        playRound('scissors');
-        roundScoreDiv.innerText = `YOU: ${userScore} COMPUTER: ${computerScore}`;
-        finishGame();
-    })
 }
 
 //Call game function.
