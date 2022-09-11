@@ -1,8 +1,8 @@
 body {
     margin: 0;
-    background-color: rgb(0, 0, 0);
-    color: rgb(184, 162, 19);
-    font-family: 'Roboto Mono', monospace;
+    background-color: black;
+    
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 h1 {
@@ -10,40 +10,52 @@ h1 {
     justify-content: center;
     font-family: 'Orbitron', sans-serif;
     font-size: 44px;
+    color: rgb(184, 162, 19);
     margin: 10px 42px;
     min-width: 600px;
 }
 
-h2 {
-    font-size: 35px;
+.round-text {
+    font-size: 30px;
+    color: rgb(231, 203, 21);
     line-height: 65px;
-    margin-top: 60px;
+    margin-top: 50px;
     margin-left: 42px;
     width: 600px;
     height: 150px;
 }
 
 button {
-    background-color: rgb(213, 72, 47);
+    background-color: rgb(185, 57, 14);
     border: none;
     border-radius: 5px;
-    padding: 10px;
     font-family: 'Orbitron', sans-serif;
+    padding: 15px;
+    font-size: 18px;
 }
 
 .main-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
 
 .round-buttons {
-    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
 .game-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    gap: 125px;
+}
+
+.round-score {
+    color: rgb(231, 203, 21);
+    font-size: 30px;
 }

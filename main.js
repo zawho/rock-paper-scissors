@@ -7,7 +7,7 @@ const roundButtons = document.querySelectorAll('.round-buttons button');
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
-const headerText = document.querySelector('h2');
+const headerText = document.querySelector('.round-text');
 const roundScoreDiv = document.querySelector('.round-score');
 const resetButton = document.querySelector('.reset-button');
 roundScoreDiv.innerText = 'ur score lol: 0 ... my score ^_^: 0';
@@ -38,7 +38,7 @@ function playRound(userSelection) {
     let computerSelection = getComputerChoice();
     let userWinMessage = `u choose ${userSelection} and i choose ${computerSelection}... interesting >_>`;
     if (userSelection === computerSelection) {
-        headerText.innerText = `we both choose ${userSelection}... ehhh... tie... >_<`;
+        headerText.innerText = `we both choose ${userSelection}... ehhh... a tie... >_<`;
     } else if ((userSelection === 'rock') && (computerSelection === 'scissors')) {
         userScore += 1;
         headerText.innerText = userWinMessage;
