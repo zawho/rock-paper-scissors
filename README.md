@@ -4,4 +4,4 @@ Saturday, August 20, 2022 - I have completed the first version of the game, runn
 
 Wednesday, September 7, 2022 - I have learned a bit about the DOM and will now implement a UI into my RPS game.
 
-Sunday, September 11, 2022 - I have finished the RPS game UI. I added a few extra bits beyond the scope of the TOP propect, including a reset button and an overlay that mimics CRT scanlines.
+Sunday, September 11, 2022 - I have finished the RPS game UI. I added a few extra bits beyond the scope of the TOP propect, including a reset button and an overlay that mimics CRT scanlines. The CRT overlay looks wonky on mobile so I removed it on displays less than 1000 pixels wide.
