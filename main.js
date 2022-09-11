@@ -7,7 +7,8 @@ const roundButtons = document.querySelectorAll('.round-buttons button');
 const rockButton = document.querySelector('.rock');
 const paperButton = document.querySelector('.paper');
 const scissorsButton = document.querySelector('.scissors');
-const headerText = document.querySelector('.round-text');
+const headerText = document.querySelector('.sub-head');
+const roundText = document.querySelector('.round-winner');
 const roundScoreDiv = document.querySelector('.round-score');
 const resetButton = document.querySelector('.reset-button');
 roundScoreDiv.innerText = 'ur score lol: 0 ... my score ^_^: 0';
@@ -64,11 +65,9 @@ function playGame() {
 //Declare winner.
 function getWinner() {
     if (userScore > computerScore) {
-        headerText.innerText = 'u win...? ...disturbing...0_0';
-    } else if (userScore < computerScore) {
-        headerText.innerText = 'LOL i win! of course... im a computer ^_^';
+        roundText.innerText = 'u win...? ...disturbing...0_0';
     } else {
-        headerText.innerText = 'a tie? really? *eye roll*';
+        roundText.innerText = 'LOL i win! of course... im a computer ^_^';
     }
 }
 
@@ -88,6 +87,7 @@ function resetGame() {
         userScore = 0;
         computerScore = 0;
         headerText.innerText = 'oh u wanna start over...? lol ok -_-';
+        roundText.innerText = '';
         roundScoreDiv.innerText = 'ur score lol: 0 ... my score ^_^: 0';
         playGame();
     }
