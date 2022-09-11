@@ -79,6 +79,12 @@ button {
     body {
         background-color: black;
     }
+
+    button {
+        border: 2px solid;
+        font-size: 28px;
+    }
+
     .overlay {
     background: transparent;
     }    
